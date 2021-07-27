@@ -5,14 +5,16 @@ import Col from "antd/lib/col";
 import Card from "antd/lib/card";
 import Avatar from "antd/lib/avatar";
 import Pagination from "antd/lib/pagination";
+import Typography from "antd/lib/typography";
 import { TwitterOutlined, InstagramOutlined } from "@ant-design/icons";
 import { ITEMS_PER_PAGE } from "../../utils/constants";
 import "./styles.scss";
 
+const { Title, Paragraph } = Typography;
 const { Meta } = Card;
 const ListImages = ({ listImagesData, currentPage, onPaging }) => {
   const listImagesLayout = {
-    xs: 12,
+    xs: 24,
     sm: 12,
     md: 6,
     lg: 6,
@@ -63,8 +65,19 @@ const ListImages = ({ listImagesData, currentPage, onPaging }) => {
             >
               <Meta
                 avatar={<Avatar src={image.user.profile_image.small} />}
-                title={`A photo by: ${image.user.name}`}
-                description={image.description}
+                title={
+                  <Title
+                    level={4}
+                    ellipsis={{ tooltip: `A photo by: ${image.user.name}` }}
+                  >{`A photo by: ${image.user.name}`}</Title>
+                }
+                description={
+                  <Paragraph
+                    ellipsis={{ rows: 3, expandable: true, symbol: "More" }}
+                  >
+                    {image.description}
+                  </Paragraph>
+                }
               />
             </Card>
           </Col>
@@ -76,6 +89,8 @@ const ListImages = ({ listImagesData, currentPage, onPaging }) => {
           total={total}
           defaultPageSize={ITEMS_PER_PAGE}
           onChange={handleOnChange}
+          showSizeChanger={false}
+          showQuickJumper
         />
       </div>
     </>
