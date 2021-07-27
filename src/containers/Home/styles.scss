@@ -1,0 +1,49 @@
+.page {
+  &-layout {
+    height: 100%;
+  }
+
+  &-header {
+    text-align: center;
+    background: linear-gradient(to right, #eaafc8, #654ea3);
+    padding: 50px;
+    height: auto;
+
+    &-title {
+      display: inline-block;
+      position: relative;
+      color: #fff;
+      text-shadow: 0 0 10px #ffeb3d;
+      margin-bottom: 0;
+      font-size: 50px;
+
+      &:after {
+        content: attr(data-title);
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 100%;
+        transform: translateX(-50%);
+        color: #ffeb3d;
+        filter: blur(25px);
+      }
+    }
+  }
+
+  &-content {
+    padding: 24px;
+    height: 100%;
+
+    &-loading,
+    &-container {
+      margin-top: 12px;
+      padding: 24px;
+      background-color: #fff;
+      border-radius: 3px;
+    }
+
+    &-loading {
+      text-align: center;
+    }
+  }
+}
